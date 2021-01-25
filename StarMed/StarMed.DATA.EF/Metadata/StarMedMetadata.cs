@@ -8,9 +8,9 @@ using System.ComponentModel.DataAnnotations;
 namespace StarMed.DATA.EF
 {
     #region Applications Metadata
-     public class ApplicationsMetadata
+    public class ApplicationsMetadata
     {
-        
+
         public int ApplicationId { get; set; }
 
         [Display(Name = "Position: ")]
@@ -142,13 +142,7 @@ namespace StarMed.DATA.EF
     [MetadataType(typeof(PositionsMetadata))]
 
     public partial class Positions { }
-    #endregion
-
-    #region UserDetails Metadata
-    {
-
-
-    #endregion
+    #endregion  
 
     #region UserDetails Metadata
     public class UserDetailsMetadata
@@ -171,5 +165,8 @@ namespace StarMed.DATA.EF
         [StringLength(75, ErrorMessage = "* Field must be 75 characters or less.")]
         public string ResumeFilename { get; set; }
     }
+    [MetadataType(typeof(UserDetailsMetadata))]
+
+    public partial class UserDetails { }
     #endregion
 }
