@@ -12,19 +12,22 @@ namespace StarMed.DATA.EF
     using System;
     using System.Collections.Generic;
     
-    public partial class Positions
+    public partial class Location
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Positions()
+        public Location()
         {
-            this.OpenPositions = new HashSet<OpenPositions>();
+            this.OpenPositions = new HashSet<OpenPosition>();
         }
     
-        public int PositionId { get; set; }
-        public string Title { get; set; }
-        public string JobDescription { get; set; }
+        public int LocationId { get; set; }
+        public string StoreNumber { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+        public string ManagerId { get; set; }
     
+        public virtual UserDetail UserDetail { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OpenPositions> OpenPositions { get; set; }
+        public virtual ICollection<OpenPosition> OpenPositions { get; set; }
     }
 }

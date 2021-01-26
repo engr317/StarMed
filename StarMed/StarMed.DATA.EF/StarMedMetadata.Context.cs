@@ -25,11 +25,11 @@ namespace StarMed.DATA.EF
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Applications> Applications1 { get; set; }
-        public virtual DbSet<ApplicationStatuses> ApplicationStatuses { get; set; }
-        public virtual DbSet<Locations> Locations1 { get; set; }
-        public virtual DbSet<OpenPositions> OpenPositions1 { get; set; }
-        public virtual DbSet<Positions> Positions1 { get; set; }
-        public virtual DbSet<UserDetails> UserDetails1 { get; set; }
+        public virtual DbSet<Application> Applications { get; set; }
+        public virtual DbSet<ApplicationStatus> ApplicationStatuses { get; set; }
+        public virtual DbSet<Location> Locations { get; set; }
+        public virtual DbSet<OpenPosition> OpenPositions { get; set; }
+        public virtual DbSet<Position> Positions { get; set; }
+        public virtual DbSet<UserDetail> UserDetails { get; set; }
     }
 }

@@ -12,7 +12,7 @@ namespace StarMed.DATA.EF
     using System;
     using System.Collections.Generic;
     
-    public partial class Applications
+    public partial class Application
     {
         public int ApplicationId { get; set; }
         public int OpenPositionId { get; set; }
@@ -22,8 +22,8 @@ namespace StarMed.DATA.EF
         public int ApplicationStatus { get; set; }
         public string ResumeFilename { get; set; }
     
-        public virtual ApplicationStatuses ApplicationStatus1 { get; set; }
-        public virtual OpenPositions OpenPosition { get; set; }
-        public virtual UserDetails UserDetail { get; set; }
+        public virtual ApplicationStatus ApplicationStatus1 { get; set; }
+        public virtual OpenPosition OpenPosition { get; set; }
+        public virtual UserDetail UserDetail { get; set; }
     }
 }

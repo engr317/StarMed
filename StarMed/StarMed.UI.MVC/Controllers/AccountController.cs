@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using StarMed.DATA.EF;
 
 namespace StarMed.UI.MVC.Controllers
 {
@@ -153,11 +154,31 @@ namespace StarMed.UI.MVC.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
-                    ViewBag.Link = callbackUrl;
-                    return View("DisplayEmail");
+
+                    UserDetail newUserDetails = new UserDetail();
+
+                    newUserDetails.UserId = user.Id;
+                    newUserDetails.FirstName = model.Email;
+                    newUserDetails.LastName = model.Password;
+
+                    StarMedEntities db = new StarMedEntities();
+                    db.UserDetails.Add(newUserDetails);
+                    db.SaveChanges();
+
+                    //update reg view modl
+
+                //update reg view
+
+                //update new user with Fname and Lname
+
+                //process file upload on tuesday.
+
+                    
+                    //var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    //var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    //await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
+                    //ViewBag.Link = callbackUrl;
+                    //return View("DisplayEmail");
                 }
                 AddErrors(result);
             }

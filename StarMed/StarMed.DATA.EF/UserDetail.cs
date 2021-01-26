@@ -12,13 +12,13 @@ namespace StarMed.DATA.EF
     using System;
     using System.Collections.Generic;
     
-    public partial class UserDetails
+    public partial class UserDetail
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public UserDetails()
+        public UserDetail()
         {
-            this.Applications = new HashSet<Applications>();
-            this.Locations = new HashSet<Locations>();
+            this.Applications = new HashSet<Application>();
+            this.Locations = new HashSet<Location>();
         }
     
         public string UserId { get; set; }
@@ -27,8 +27,8 @@ namespace StarMed.DATA.EF
         public string ResumeFilename { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Applications> Applications { get; set; }
+        public virtual ICollection<Application> Applications { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Locations> Locations { get; set; }
+        public virtual ICollection<Location> Locations { get; set; }
     }
 }

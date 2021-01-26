@@ -5,18 +5,18 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="a7e0cb17364141ad9566cdf51519b378" Name="Diagram1">
-        <EntityTypeShape EntityType="StarMedModel.Applications" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="StarMedModel.ApplicationStatuses" Width="2.875" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="StarMedModel.Locations" Width="1.5" PointX="3" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="StarMedModel.OpenPositions" Width="1.5" PointX="5.25" PointY="7.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="StarMedModel.Positions" Width="1.5" PointX="3" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="StarMedModel.UserDetails" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
-        <AssociationConnector Association="StarMedModel.FK_Applications_ApplicationStatuses" ManuallyRouted="false" />
-        <AssociationConnector Association="StarMedModel.FK_Applications_OpenPositions" ManuallyRouted="false" />
-        <AssociationConnector Association="StarMedModel.FK_Applications_UserDetails" ManuallyRouted="false" />
-        <AssociationConnector Association="StarMedModel.FK_Locations_UserDetails" ManuallyRouted="false" />
-        <AssociationConnector Association="StarMedModel.FK_OpenPositions_Locations" ManuallyRouted="false" />
-        <AssociationConnector Association="StarMedModel.FK_OpenPositions_Positions" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="StarMedModel.Application" Width="1.5" PointX="3" PointY="3.5" />
+        <EntityTypeShape EntityType="StarMedModel.ApplicationStatus" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="StarMedModel.Location" Width="1.5" PointX="3" PointY="7.375" />
+        <EntityTypeShape EntityType="StarMedModel.OpenPosition" Width="1.5" PointX="5.25" PointY="7.5" />
+        <EntityTypeShape EntityType="StarMedModel.Position" Width="1.5" PointX="3" PointY="10.75" />
+        <EntityTypeShape EntityType="StarMedModel.UserDetail" Width="1.5" PointX="0.75" PointY="3.875" />
+        <AssociationConnector Association="StarMedModel.FK_Applications_ApplicationStatuses" />
+        <AssociationConnector Association="StarMedModel.FK_Applications_OpenPositions" />
+        <AssociationConnector Association="StarMedModel.FK_Applications_UserDetails" />
+        <AssociationConnector Association="StarMedModel.FK_Locations_UserDetails" />
+        <AssociationConnector Association="StarMedModel.FK_OpenPositions_Locations" />
+        <AssociationConnector Association="StarMedModel.FK_OpenPositions_Positions" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

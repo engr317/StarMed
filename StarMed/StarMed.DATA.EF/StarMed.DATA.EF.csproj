@@ -50,20 +50,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Applications.cs">
+    <Compile Include="Application.cs">
       <DependentUpon>StarMedMetadata.tt</DependentUpon>
     </Compile>
-    <Compile Include="ApplicationStatuses.cs">
+    <Compile Include="ApplicationStatus.cs">
       <DependentUpon>StarMedMetadata.tt</DependentUpon>
     </Compile>
-    <Compile Include="Locations.cs">
+    <Compile Include="Location.cs">
       <DependentUpon>StarMedMetadata.tt</DependentUpon>
     </Compile>
     <Compile Include="Metadata\StarMedMetadata.cs" />
-    <Compile Include="OpenPositions.cs">
+    <Compile Include="OpenPosition.cs">
       <DependentUpon>StarMedMetadata.tt</DependentUpon>
     </Compile>
-    <Compile Include="Positions.cs">
+    <Compile Include="Position.cs">
       <DependentUpon>StarMedMetadata.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -82,7 +82,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>StarMedMetadata.edmx</DependentUpon>
     </Compile>
-    <Compile Include="UserDetails.cs">
+    <Compile Include="UserDetail.cs">
       <DependentUpon>StarMedMetadata.tt</DependentUpon>
     </Compile>
   </ItemGroup>

@@ -46,7 +46,7 @@ namespace StarMed.DATA.EF
     }
     [MetadataType(typeof(ApplicationsMetadata))]
 
-    public partial class Applications { }
+    public partial class Application { }
     #endregion
 
     #region ApplicationStatuses Metadata
@@ -68,7 +68,7 @@ namespace StarMed.DATA.EF
     }
     [MetadataType(typeof(ApplicationStatusesMetadata))]
 
-    public partial class ApplicationStatuses { }
+    public partial class ApplicationStatus { }
     #endregion
 
     #region Locations Metadata
@@ -100,7 +100,7 @@ namespace StarMed.DATA.EF
     }
     [MetadataType(typeof(LocationsMetadata))]
 
-    public partial class Locations { }
+    public partial class Location { }
     #endregion
 
     #region OpenPositions Metadata
@@ -119,7 +119,7 @@ namespace StarMed.DATA.EF
     }
     [MetadataType(typeof(OpenPositionsMetadata))]
 
-    public partial class OpenPositions { }
+    public partial class OpenPosition { }
     #endregion
 
     #region Positions Metadata
@@ -141,7 +141,7 @@ namespace StarMed.DATA.EF
     }
     [MetadataType(typeof(PositionsMetadata))]
 
-    public partial class Positions { }
+    public partial class Position { }
     #endregion  
 
     #region UserDetails Metadata
@@ -167,6 +167,6 @@ namespace StarMed.DATA.EF
     }
     [MetadataType(typeof(UserDetailsMetadata))]
 
-    public partial class UserDetails { }
+    public partial class UserDetail { }
     #endregion
 }
