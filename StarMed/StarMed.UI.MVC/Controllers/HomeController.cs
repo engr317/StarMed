@@ -22,7 +22,7 @@ namespace StarMed.UI.MVC.Controllers
         [HttpGet]
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Home Care Services and Medical Staffing Solutions";
 
             return View();
         }

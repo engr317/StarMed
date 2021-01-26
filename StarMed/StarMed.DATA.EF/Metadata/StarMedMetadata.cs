@@ -167,6 +167,14 @@ namespace StarMed.DATA.EF
     }
     [MetadataType(typeof(UserDetailsMetadata))]
 
-    public partial class UserDetail { }
+    public partial class UserDetail
+    {
+        [Display(Name = "Full Name: ")]
+        public string FullName
+        {
+            get { return FirstName + " " + LastName; }
+        }
+
+    }
     #endregion
 }

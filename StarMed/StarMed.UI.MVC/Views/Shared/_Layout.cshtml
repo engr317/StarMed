@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -25,9 +25,28 @@
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
 
-                    @if (Request.IsAuthenticated && User.IsInRole("Admin")) {
-                        <li>@Html.ActionLink("RolesAdmin", "Index", "RolesAdmin")</li>
-                        <li>@Html.ActionLink("UsersAdmin", "Index", "UsersAdmin")</li>
+
+                    @if (Request.IsAuthenticated)
+                    {
+                        <li class="nav-item dropdown">
+                            <a class="navbar-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Additional Functions<span class="caret"></span></a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                @if (User.IsInRole("Admin") || User.IsInRole("Manager"))
+                                {
+                                    <a class="dropdown-item" href="@Url.Action("Index", "Applications")">Applications</a><br />
+                                    <a class="dropdown-item" href="@Url.Action("Index", "ApplicationStatus")">App Status</a><br />
+                                }
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    <a class="dropdown-item" href="@Url.Action("Index", "RolesAdmin")">Roles</a><br />
+                                    <a class="dropdown-item" href="@Url.Action("Index", "UsersAdmin")">Users</a><br />
+                                    <a class="dropdown-item" href="@Url.Action("Index", "UserDetails")">User Details</a><br />
+                                    <a class="dropdown-item" href="@Url.Action("Index", "Positions")">Positions</a><br />
+                                }
+                                <a class="dropdown-item" href="@Url.Action("Index", "Locations")">Locations</a>
+                                <a class="dropdown-item" href="@Url.Action("Index", "OpenPositions")">Open Positions</a>
+                            </div>
+                        </li>
                     }
                 </ul>
                 @Html.Partial("_LoginPartial")
