@@ -1,10 +1,10 @@
 ﻿@model StarMed.DATA.EF.ApplicationStatus
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Application Status";
 }
 
-<h2>Edit</h2>
+<h2>@ViewBag.Title</h2>
 
 
 @using (Html.BeginForm())
@@ -12,7 +12,7 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>ApplicationStatus</h4>
+        <h4>Edit:</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.ApplicationStatusId)
