@@ -1,26 +1,80 @@
-﻿@{
+﻿@model StarMed.UI.MVC.Models.ContactViewModel
+
+@{
     ViewBag.Title = "Contact StarMed Care of Colorado Springs";
 }
-<hgroup>
+<div class="container-fluid">
     <h2>@ViewBag.Title</h2>
-    <h3>@ViewBag.Message</h3>    
-</hgroup>
+    <h3>@ViewBag.Message</h3>
+
+    <div>
+        <p>
+            Tell us how StarMed Care of Colorado Springs can deliver a Higher Standard of Care to you and your loved one or your business. To help us better serve you, please fill out the form below. One of our team members will get in touch with you right away.
+
+            Or, call our office at (719) 867-5309 to get immediate assistance. No matter what time of day it is, we have a team of professionals standing by 24/7 to assist you and your family with your needs and answer your questions.
+
+            We provide elder care, adult home care, child care, and medical staffing in the Colorado Springs area.
+        </p>
+        <address>
+            414 Tia Juana Ave.<br />
+            Suite 888 <br />
+            Colorado Springs, CO 80909 <br />
+        </address>
+
+        <address>
+            <i class="icon-envelope"></i><strong>Support:</strong>   <a href="mailto:Support@StarMed.com">Support@StarMed.com</a><br />
+            <i class="icon-envelope"></i><strong>Marketing:</strong> <a href="mailto:Marketing@StarMed.com">Marketing@StarMed.com</a>
+        </address>
+    </div>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Subject, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Subject, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Subject, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Message, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Message, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    }
+</div>
 <div>
-    <p>
-        Tell us how StarMed Care of Colorado Springs can deliver a Higher Standard of Care to you and your loved one or your business. To help us better serve you, please fill out the form below. One of our team members will get in touch with you right away.
-
-        Or, call our office at (719) 867-5309 to get immediate assistance. No matter what time of day it is, we have a team of professionals standing by 24/7 to assist you and your family with your needs and answer your questions.
-
-        We provide elder care, adult home care, child care, and medical staffing in the Colorado Springs area.
-    </p>
-    <address>
-        414 Tia Juana Ave.<br />
-        Suite 888 <br />
-        Colorado Springs, CO 80909 <br />
-    </address>
-
-    <address>
-        <i class="icon-envelope"></i><strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-        <i class="icon-envelope"></i><strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-    </address>
+    @Html.ActionLink("Back to List", "Index")
 </div>

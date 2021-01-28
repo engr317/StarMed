@@ -1,68 +1,130 @@
-﻿<!DOCTYPE html>
-<html>
+﻿<!doctype html>
+<html lang="en">
+
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="author" content="David See" />
+    <meta name="description" content="This is a internal application for a company to post open jobs" />
+    <meta name="keywords" content="job, board, internal" />
+    <!-- Document title -->
     <title>@ViewBag.Title</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <!-- Stylesheets & Fonts -->
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i%7CRajdhani:400,600,700"
+          rel="stylesheet">
 
+    <!--  HTML5 Shiv-->
+    <!--[if lt IE 9]<script src="assets/js/html5shiv.js"></script><![endlf]-->
+    <!--FAVICON-->
+    <!-- Plugins Stylesheets -->
+    <link rel="stylesheet" href="~/Content/css/loader/loaders.css">
+    <link rel="stylesheet" href="~/Content/css/font-awesome/font-awesome.css">
+    <link rel="stylesheet" href="~/Content/css/bootstrap.css">
+    <link rel="stylesheet" href="~/Content/css/aos/aos.css">
+    <link rel="stylesheet" href="~/Content/css/swiper/swiper.css">
+    <link rel="stylesheet" href="~/Content/css/lightgallery.min.css">
+    <!-- Template Stylesheet -->
+    <link rel="stylesheet" href="~/Content/css/style.css">
+    <!-- Responsive Stylesheet -->
+    <link rel="stylesheet" href="~/Content/css/responsive.css">
+    <!--Custom Stylesheet -->
+    <link rel="stylesheet" href="~/Content/css/Custom.css" />
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="~/Content/images/favicon.ico" type="image/x-icon" />
 </head>
+
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <!-- Loader Start -->
+    <div class="css-loader">
+        <div class="loader-inner line-scale d-flex align-items-center justify-content-center"></div>
+    </div>
+    <!-- Loader End -->
+    <!-- Header Start -->
+    <header class="position-relative">
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", null, new { @class = "navbar-brand" })
+            <div id="branding">
+                <h1>StarMed Staffing</h1>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+            <nav class="navbar navbar-expand-md navbar-light">
+                
+                <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                    <ul class="navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
 
-
-                    @if (Request.IsAuthenticated)
-                    {
-                        <li class="nav-item dropdown">
-                            <a class="navbar-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Additional Functions<span class="caret"></span></a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                @if (User.IsInRole("Admin") || User.IsInRole("Manager"))
-                                {
-                                    <a class="dropdown-item" href="@Url.Action("Index", "Applications")">Applications</a><br />
-                                    <a class="dropdown-item" href="@Url.Action("Index", "ApplicationStatus")">App Status</a><br />
-                                }
-                                @if (User.IsInRole("Admin"))
-                                {
-                                    <a class="dropdown-item" href="@Url.Action("Index", "RolesAdmin")">Roles</a><br />
-                                    <a class="dropdown-item" href="@Url.Action("Index", "UsersAdmin")">Users</a><br />
-                                    <a class="dropdown-item" href="@Url.Action("Index", "UserDetails")">User Details</a><br />
-                                    <a class="dropdown-item" href="@Url.Action("Index", "Positions")">Positions</a><br />
-                                }
-                                <a class="dropdown-item" href="@Url.Action("Index", "Locations")">Locations</a><br />
-                                <a class="dropdown-item" href="@Url.Action("Index", "OpenPositions")">Open Positions</a>
-                            </div>
-                        </li>
-                    }
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
+                        @if (Request.IsAuthenticated)
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="navbar-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Additional Functions<span class="caret"></span></a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    @if (User.IsInRole("Admin") || User.IsInRole("Manager"))
+                                    {
+                                        <a class="dropdown-item" href="@Url.Action("Index", "Applications")">Applications</a><br />
+                                        <a class="dropdown-item" href="@Url.Action("Index", "ApplicationStatus")">App Status</a><br />
+                                    }
+                                    @if (User.IsInRole("Admin"))
+                                    {
+                                        <a class="dropdown-item" href="@Url.Action("Index", "RolesAdmin")">Roles</a><br />
+                                        <a class="dropdown-item" href="@Url.Action("Index", "UsersAdmin")">Users</a><br />
+                                        <a class="dropdown-item" href="@Url.Action("Index", "UserDetails")">User Details</a><br />
+                                        <a class="dropdown-item" href="@Url.Action("Index", "Positions")">Positions</a><br />
+                                    }
+                                    <a class="dropdown-item" href="@Url.Action("Index", "Locations")">Locations</a><br />
+                                    <a class="dropdown-item" href="@Url.Action("Index", "OpenPositions")">Open Positions</a>
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                </div>
+            </nav>
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
+    </header>    
+    <!-- Header End -->        
 
+        @RenderBody()
+         
+    <!-- Footer Start -->
+    <footer>
+        <!-- Widgets Start -->
+        <div class="footer-widgets">
+            <div class="container">
+                <div class="row">
+                    <div class="single-widget subscribe-widget" data-aos="fade-up" data-aos-delay="300">
+                        <h6 class="widget-title">Subscribe</h6>
+                        <p>Sign up for our mailing list to get latest updates and offers</p>
+                        <form class="" method="get">
+                            <div class="input-group">
+                                <input class="field form-control" name="subscribe" type="email"
+                                       placeholder="Email Address">
+                                <span class="input-group-btn">
+                                    <button type="submit" name="submit-mail"><i class="fa fa-check"></i></button>
+                                </span>
+                            </div>
+                        </form>                       
+                    </div>
+                </div>
+            </div>
+        </div>       
+    </footer>
+    <!-- Footer End -->
+
+    <!--jQuery-->
+    <script src="~/Content/js/jquery-3.3.1.js"></script>
+    <!--Plugins-->
+    <script src="~/Content/js/bootstrap.bundle.js"></script>
+    <script src="~/Content/js/loaders.css.js"></script>
+    <script src="~/Content/js/aos.js"></script>
+    <script src="~/Content/js/swiper.min.js"></script>
+    <script src="~/Content/js/lightgallery-all.min.js"></script>
+    <!--Template Script-->
+    <script src="~/Content/js/main.js"></script>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>
+
 </html>

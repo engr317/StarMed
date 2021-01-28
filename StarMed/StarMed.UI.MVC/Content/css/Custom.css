@@ -1,0 +1,48 @@
+﻿/** Global **/
+
+.navbar-nav > li {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.form-control {
+    color: black;
+    border: 2px solid black;
+}
+
+header {
+
+}
+
+.container {
+}
+
+/* Banner */
+
+#banner {
+    color: black;
+    background-image: url(../../Content/images/pexels.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    height: 500px;
+}
+
+.main {
+    background-color: lightgray;
+}
+
+    .main h2 {
+        text-align: center;
+        padding:2em;
+    }
+
+.card {
+    margin: 2em 9em;
+}
+
+.card img {
+    height:200px;
+    width:auto;
+}
