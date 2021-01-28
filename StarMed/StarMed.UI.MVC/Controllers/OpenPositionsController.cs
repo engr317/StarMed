@@ -7,23 +7,34 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using StarMed.DATA.EF;
+using Microsoft.AspNet.Identity;
 
 namespace StarMed.UI.MVC.Controllers
 {
+    [Authorize]
     public class OpenPositionsController : Controller
     {
         private StarMedEntities db = new StarMedEntities();
 
         // GET: OpenPositions
-        [Authorize]
+        [Authorize(Roles = "Manager, Admin")]
         public ActionResult Index()
         {
-            var openPositions = db.OpenPositions.Include(o => o.Location).Include(o => o.Position);
-            return View(openPositions.ToList());
+            //Get the current userID and store in a variable
+
+            string currentUserID = User.Identity.GetUserId();
+            if (User.IsInRole("Admin"))
+            {
+                var openPositions = db.OpenPositions.Include(o => o.Location).Include(o => o.Position);
+                return View(openPositions.ToList().OrderBy(x => x.LocationId));
+            }
+
+            if (User.IsInRole("Manager"))            {                var openPositions = db.OpenPositions.Where(x => x.Location.ManagerId == currentUserID).Include(o => o.Location).Include(o => o.Position);                return View(openPositions.ToList().OrderBy(x => x.LocationId));            }            return View();
+
         }
 
         // GET: OpenPositions/Details/5
-        [Authorize]
+        [Authorize(Roles = "Employee, Admin")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -39,7 +50,7 @@ namespace StarMed.UI.MVC.Controllers
         }
 
         // GET: OpenPositions/Create
-        [Authorize]
+       
         public ActionResult Create()
         {
             ViewBag.LocationId = new SelectList(db.Locations, "LocationId", "StoreNumber");
@@ -51,7 +62,7 @@ namespace StarMed.UI.MVC.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [Authorize]
+       
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "OpenPositionId,PositionId,LocationId")] OpenPosition openPosition)
         {
@@ -68,7 +79,7 @@ namespace StarMed.UI.MVC.Controllers
         }
 
         // GET: OpenPositions/Edit/5
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -89,7 +100,7 @@ namespace StarMed.UI.MVC.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "OpenPositionId,PositionId,LocationId")] OpenPosition openPosition)
         {
@@ -105,7 +116,7 @@ namespace StarMed.UI.MVC.Controllers
         }
 
         // GET: OpenPositions/Delete/5
-        [Authorize]
+        
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -122,7 +133,7 @@ namespace StarMed.UI.MVC.Controllers
 
         // POST: OpenPositions/Delete/5
         [HttpPost, ActionName("Delete")]
-        [Authorize]
+        
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {

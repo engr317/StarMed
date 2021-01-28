@@ -10,8 +10,7 @@ using StarMed.DATA.EF;
 using System;
 
 namespace StarMed.UI.MVC.Controllers
-{
-    [Authorize]
+{    
     public class AccountController : Controller
     {
         public AccountController()
@@ -164,8 +163,7 @@ namespace StarMed.UI.MVC.Controllers
                     if (userResume != null)
                     {
                         userFile = userResume.FileName;
-                        string ext = userFile.Substring(userFile.LastIndexOf("."));
-                        //string[] goodExts = new string[] {".pdf",".doc",".docx" };
+                        string ext = userFile.Substring(userFile.LastIndexOf("."));                        
 
                         if (ext.ToLower() == ".pdf")
                         {
@@ -182,7 +180,7 @@ namespace StarMed.UI.MVC.Controllers
 
                     newUserDetails.UserId = user.Id;
                     newUserDetails.FirstName = model.FirstName;
-                    newUserDetails.LastName = model.LastName;
+                    newUserDetails.LastName = model.LastName;                    
                     //use the resulting file for the resume
                     newUserDetails.ResumeFilename = userFile;
                     

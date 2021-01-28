@@ -10,6 +10,7 @@ using StarMed.DATA.EF;
 
 namespace StarMed.UI.MVC.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class ApplicationStatusController : Controller
     {
         private StarMedEntities db = new StarMedEntities();

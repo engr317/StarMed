@@ -218,6 +218,7 @@
     <Content Include="Content\images\nurse-portrait.jpg" />
     <Content Include="Content\images\pexels.jpg" />
     <Content Include="Content\images\ss-nursing.jpg" />
+    <Content Include="Content\images\StarMed_logo.png" />
     <Content Include="Content\js\aos.js" />
     <Content Include="Content\js\bootstrap.bundle.js" />
     <Content Include="Content\js\bootstrap.bundle.min.js" />

@@ -10,19 +10,18 @@ using StarMed.DATA.EF;
 
 namespace StarMed.UI.MVC.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class PositionsController : Controller
     {
         private StarMedEntities db = new StarMedEntities();
 
-        // GET: Positions
-        [Authorize]
+        // GET: Positions        
         public ActionResult Index()
         {
             return View(db.Positions.ToList());
         }
 
-        // GET: Positions/Details/5
-        [Authorize]
+        // GET: Positions/Details/5        
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -37,8 +36,7 @@ namespace StarMed.UI.MVC.Controllers
             return View(position);
         }
 
-        // GET: Positions/Create
-        [Authorize]
+        // GET: Positions/Create        
         public ActionResult Create()
         {
             return View();
@@ -47,8 +45,7 @@ namespace StarMed.UI.MVC.Controllers
         // POST: Positions/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [Authorize]
+        [HttpPost]        
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "PositionId,Title,JobDescription")] Position position)
         {
@@ -62,8 +59,7 @@ namespace StarMed.UI.MVC.Controllers
             return View(position);
         }
 
-        // GET: Positions/Edit/5
-        [Authorize]
+        // GET: Positions/Edit/5        
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -81,8 +77,7 @@ namespace StarMed.UI.MVC.Controllers
         // POST: Positions/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [Authorize]
+        [HttpPost]        
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "PositionId,Title,JobDescription")] Position position)
         {
@@ -95,8 +90,7 @@ namespace StarMed.UI.MVC.Controllers
             return View(position);
         }
 
-        // GET: Positions/Delete/5
-        [Authorize]
+        // GET: Positions/Delete/5        
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -111,8 +105,7 @@ namespace StarMed.UI.MVC.Controllers
             return View(position);
         }
 
-        // POST: Positions/Delete/5
-        [Authorize]
+        // POST: Positions/Delete/5        
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

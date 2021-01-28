@@ -7,25 +7,41 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using StarMed.DATA.EF;
+using Microsoft.AspNet.Identity;
 
 namespace StarMed.UI.MVC.Controllers
 {
+    [Authorize]
     public class ApplicationsController : Controller
     {
         private StarMedEntities db = new StarMedEntities();
 
-        // GET: Applications
-        [Authorize]
+        // GET: Applications         
         public ActionResult Index()
         {
             var applications = db.Applications.Include(a => a.ApplicationStatus1).Include(a => a.OpenPosition).Include(a => a.UserDetail);
+            //for employee role - should only return applications that they have completed (with thier UserId)
+            string currentUserID = User.Identity.GetUserId();
+            if (User.IsInRole("Employee"))
+            {
+                var empApplications = applications.Where(x => x.UserId == currentUserID);                
+            }
+
+            if (User.IsInRole("Manager"))
+            {
+                var managerApplications = applications.Where(x => x.UserId == currentUserID).Include(x => x.OpenPosition.LocationId).Include(x => x.)
+            }
+
+            //managers can only see apps based on thier location
+
+            
             return View(applications.ToList());
         }
 
-        // GET: Applications/Details/5
-        [Authorize]
+        // GET: Applications/Details/5          
         public ActionResult Details(int? id)
         {
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -38,8 +54,7 @@ namespace StarMed.UI.MVC.Controllers
             return View(application);
         }
 
-        // GET: Applications/Create
-        [Authorize]
+        // GET: Applications/Create        
         public ActionResult Create()
         {
             ViewBag.ApplicationStatus = new SelectList(db.ApplicationStatuses, "ApplicationStatusId", "StatusName");
@@ -51,8 +66,7 @@ namespace StarMed.UI.MVC.Controllers
         // POST: Applications/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [Authorize]
+        [HttpPost]        
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ApplicationId,OpenPositionId,UserId,ApplicationDate,ManagerNotes,ApplicationStatus,ResumeFilename")] Application application)
         {
@@ -70,7 +84,7 @@ namespace StarMed.UI.MVC.Controllers
         }
 
         // GET: Applications/Edit/5
-        [Authorize]
+        [Authorize(Roles ="Admin, Manager")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -92,7 +106,7 @@ namespace StarMed.UI.MVC.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "Admin, Manager")]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ApplicationId,OpenPositionId,UserId,ApplicationDate,ManagerNotes,ApplicationStatus,ResumeFilename")] Application application)
         {
@@ -109,7 +123,7 @@ namespace StarMed.UI.MVC.Controllers
         }
 
         // GET: Applications/Delete/5
-        [Authorize]
+        [Authorize(Roles = "Admin, Manager")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -126,7 +140,7 @@ namespace StarMed.UI.MVC.Controllers
 
         // POST: Applications/Delete/5
         [HttpPost, ActionName("Delete")]
-        [Authorize]
+        [Authorize(Roles = "Admin, Manager")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {

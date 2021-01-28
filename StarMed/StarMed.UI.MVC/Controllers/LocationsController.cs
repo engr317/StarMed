@@ -14,8 +14,8 @@ namespace StarMed.UI.MVC.Controllers
     {
         private StarMedEntities db = new StarMedEntities();
 
-        // GET: Locations
-        [Authorize]
+        // GET: Locations  
+        [AllowAnonymous]
         public ActionResult Index()
         {
             var locations = db.Locations.Include(l => l.UserDetail);
@@ -23,7 +23,7 @@ namespace StarMed.UI.MVC.Controllers
         }
 
         // GET: Locations/Details/5
-        [Authorize]
+        [AllowAnonymous]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -38,8 +38,8 @@ namespace StarMed.UI.MVC.Controllers
             return View(location);
         }
 
-        // GET: Locations/Create
-        [Authorize]
+        // GET: Locations/Create 
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             ViewBag.ManagerId = new SelectList(db.UserDetails, "UserId", "FirstName");
@@ -49,9 +49,9 @@ namespace StarMed.UI.MVC.Controllers
         // POST: Locations/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [Authorize]
+        [HttpPost]        
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create([Bind(Include = "LocationId,StoreNumber,City,State,ManagerId")] Location location)
         {
             if (ModelState.IsValid)
@@ -66,7 +66,7 @@ namespace StarMed.UI.MVC.Controllers
         }
 
         // GET: Locations/Edit/5
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -85,9 +85,9 @@ namespace StarMed.UI.MVC.Controllers
         // POST: Locations/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [Authorize]
+        [HttpPost]        
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit([Bind(Include = "LocationId,StoreNumber,City,State,ManagerId")] Location location)
         {
             if (ModelState.IsValid)
@@ -101,7 +101,7 @@ namespace StarMed.UI.MVC.Controllers
         }
 
         // GET: Locations/Delete/5
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -118,7 +118,7 @@ namespace StarMed.UI.MVC.Controllers
 
         // POST: Locations/Delete/5
         [HttpPost, ActionName("Delete")]
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {

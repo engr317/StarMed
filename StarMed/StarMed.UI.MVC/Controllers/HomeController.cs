@@ -14,8 +14,7 @@ namespace StarMed.UI.MVC.Controllers
             return View();
         }
 
-        [HttpGet]
-        [Authorize]
+        [HttpGet]        
         public ActionResult About()
         {
             ViewBag.Message = "Your app description page.";
@@ -58,6 +57,8 @@ namespace StarMed.UI.MVC.Controllers
             );
 
             msg.IsBodyHtml = true;
+
+            msg.Priority = MailPriority.High;
 
             SmtpClient client = new SmtpClient("mail.davidsee.net");
 

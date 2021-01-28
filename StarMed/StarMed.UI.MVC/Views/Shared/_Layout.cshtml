@@ -12,8 +12,7 @@
     <title>@ViewBag.Title</title>
     <!-- Stylesheets & Fonts -->
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i%7CRajdhani:400,600,700"
-          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
 
     <!--  HTML5 Shiv-->
     <!--[if lt IE 9]<script src="assets/js/html5shiv.js"></script><![endlf]-->
@@ -43,14 +42,11 @@
     <!-- Loader End -->
     <!-- Header Start -->
     <header class="position-relative">
-        <div class="container">
-            <div id="branding">
-                <h1>StarMed Staffing</h1>
-            </div>
+        <div class="container">            
             <nav class="navbar navbar-expand-md navbar-light">
-                
+                <a class="navbar-brand" href="#"><img src="~/Content/images/StarMed_logo.png" alt="StarMed"></a>
                 <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-                    <ul class="navbar-nav">
+                    <ul class="navbar-nav nav-links">
                         <li>@Html.ActionLink("Home", "Index", "Home")</li>
                         <li>@Html.ActionLink("About", "About", "Home")</li>
                         <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
