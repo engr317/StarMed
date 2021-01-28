@@ -23,41 +23,59 @@ namespace StarMed.UI.MVC.Controllers
             return View();
         }
 
+        //GET
         [HttpGet]
         public ActionResult Contact()
         {
             return View();
         }
+
+
+
+        //POST
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Contact(ContactViewModel cvm)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                string body = $"{cvm.Name} has sent you the following message: <br />" + $"{cvm.Message} <strong>from the email address {cvm.Email}";
-
-                MailMessage m = new MailMessage("you@yourdomain.com", "ToYourPersonalEmail.com", cvm.Subject, body);
-
-                m.IsBodyHtml = true;
-
-                m.Priority = MailPriority.High;
-
-                m.ReplyToList.Add(cvm.Email);
-
-                SmtpClient client = new SmtpClient("mail.yourDomain.com");
-                client.Credentials = new NetworkCredential("YourEmailUserName - Web Host", "Your Email Password - WebHost");
-
-                try
-                {
-                    client.Send(m);
-                }
-                catch (Exception e)                {
-
-                    ViewBag.Message = e.StackTrace;
-                }
-                return View("EmailConfirmation");
+                return View(cvm);
             }
 
-            return View(cvm);
+            string emailBody = $"You have recieved an email from {cvm.Name} with a subject of {cvm.Subject}.  Please respond to {cvm.Email} with " +
+                $"your email to the following message: <br/><br/> {cvm.Message}";
+
+            MailMessage msg = new MailMessage
+            (
+                //From
+                "no-reply@davidsee.net",
+                //To(where the actual message is sent)
+                "engr317@gmail.com",
+                //Subject
+                "Email from davidsee.net",
+                //Body
+                emailBody
+            );
+
+            msg.IsBodyHtml = true;
+
+            SmtpClient client = new SmtpClient("mail.davidsee.net");
+
+            client.Credentials = new NetworkCredential("no-reply@davidsee.net", "123456Ks!");
+            client.Port = 8889;
+
+            try
+            {
+                //attempt to send the email
+                client.Send(msg);
+            }
+            catch (Exception ex)
+            {
+                ViewBag.ErrorMessage = $"Sorry, Something went wrong.  Error message: {ex.Message}<br/>{ex.StackTrace}";
+                return View(cvm);
+            }
+
+            return View("EmailConfirmation", cvm);
         }
     }
 }
