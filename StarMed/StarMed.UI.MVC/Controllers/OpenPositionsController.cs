@@ -17,7 +17,7 @@ namespace StarMed.UI.MVC.Controllers
         private StarMedEntities db = new StarMedEntities();
 
         // GET: OpenPositions
-        [Authorize(Roles = "Manager, Admin")]
+        [Authorize(Roles = "Manager, Employee, Admin")]
         public ActionResult Index()
         {
             //Get the current userID and store in a variable
@@ -29,12 +29,12 @@ namespace StarMed.UI.MVC.Controllers
                 return View(openPositions.ToList().OrderBy(x => x.LocationId));
             }
 
-            if (User.IsInRole("Manager"))            {                var openPositions = db.OpenPositions.Where(x => x.Location.ManagerId == currentUserID).Include(o => o.Location).Include(o => o.Position);                return View(openPositions.ToList().OrderBy(x => x.LocationId));            }            return View();
+            if (User.IsInRole("Manager") || (User.IsInRole("Employee")))            {                var openPositions = db.OpenPositions.Where(x => x.Location.ManagerId == currentUserID).Include(o => o.Location).Include(o => o.Position);                return View(openPositions.ToList().OrderBy(x => x.LocationId));            }                        return View();
 
         }
 
         // GET: OpenPositions/Details/5
-        [Authorize(Roles = "Employee, Admin")]
+        [Authorize(Roles = "Employee, Employee, Admin")]
         public ActionResult Details(int? id)
         {
             if (id == null)

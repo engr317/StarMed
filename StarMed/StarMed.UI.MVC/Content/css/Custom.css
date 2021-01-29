@@ -1,5 +1,9 @@
 ﻿/** Global **/
 
+body {
+    padding-bottom:10em;
+}
+
 .navbar {
     display:flex;
     justify-content:space-around;
@@ -8,7 +12,9 @@
     font-family: 'Poppins', sans-serif;
 
 }
+.navbar-brand{
 
+}
 
 
 .navbar-nav > li {
@@ -66,3 +72,42 @@
     height:200px;
     width:auto;
 }
+
+/* Footer */
+.footer nav li {
+    list-style: none;
+    
+}
+.footer {
+    max-height:10em;
+}
+
+.footer .social a {
+    margin: 0 2px;
+    color:white;
+}
+.bg-dark {
+    background-color: var(--dark-color);
+    color: #fff;
+}
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);    
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+.py-5 {
+    padding: 4rem 0;
+}
+#title {
+    text-align: center;
+    padding-top: 1em;
+    color:red;
+}
+
+

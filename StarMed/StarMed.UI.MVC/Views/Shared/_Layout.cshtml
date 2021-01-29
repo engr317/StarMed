@@ -14,6 +14,9 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
 
+    <!-- Bootstrap CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
     <!--  HTML5 Shiv-->
     <!--[if lt IE 9]<script src="assets/js/html5shiv.js"></script><![endlf]-->
     <!--FAVICON-->
@@ -44,7 +47,7 @@
     <header class="position-relative">
         <div class="container">            
             <nav class="navbar navbar-expand-md navbar-light">
-                <a class="navbar-brand" href="#"><img src="~/Content/images/StarMed_logo.png" alt="StarMed"></a>
+                <a class="navbar-brand" href="@Url.Action("Index", "Home")"><img src="~/Content/images/StarMed_logo.png" alt="StarMed"></a>
                 <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                     <ul class="navbar-nav nav-links">
                         <li>@Html.ActionLink("Home", "Index", "Home")</li>
@@ -84,27 +87,29 @@
         @RenderBody()
          
     <!-- Footer Start -->
-    <footer>
-        <!-- Widgets Start -->
-        <div class="footer-widgets">
-            <div class="container">
-                <div class="row">
-                    <div class="single-widget subscribe-widget" data-aos="fade-up" data-aos-delay="300">
-                        <h6 class="widget-title">Subscribe</h6>
-                        <p>Sign up for our mailing list to get latest updates and offers</p>
-                        <form class="" method="get">
-                            <div class="input-group">
-                                <input class="field form-control" name="subscribe" type="email"
-                                       placeholder="Email Address">
-                                <span class="input-group-btn">
-                                    <button type="submit" name="submit-mail"><i class="fa fa-check"></i></button>
-                                </span>
-                            </div>
-                        </form>                       
-                    </div>
-                </div>
-            </div>
-        </div>       
+    <footer class="row footer bg-dark py-5 fixed-bottom">
+        <div class="col-md col-sm"></div>
+        <div class="container-fluid col-md col-sm">
+            <h1>StarMed</h1>
+            <p>Copyright &copy; 2021</p>
+        </div>
+        <div class="col-md col-sm">
+            <nav>
+                <ul>
+                    <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+                    <li><a href="@Url.Action("Contact", "Home")">Contact</a></li>
+                    <li><a href="@Url.Action("About", "Home")">About Us</a></li>
+                    <li><a href="@Url.Action("Documentation", "Home")">Documentation</a></li>
+                </ul>
+            </nav>
+        </div>        
+        <div class="social col-md col-sm">
+            <a href="#"><i class="fa fa-twitter fa-2x"></i></a>
+            <a href="#"><i class="fa fa-facebook fa-2x"></i></a>
+            <a href="#"><i class="fa fa-github fa-2x"></i></a>
+            <a href="#"><i class="fa fa-instagram fa-2x"></i></a>
+        </div>
+       <div class="col-md col-sm"></div>
     </footer>
     <!-- Footer End -->
 
