@@ -1,48 +1,144 @@
 ﻿@model IEnumerable<StarMed.DATA.EF.OpenPosition>
 
 @{
-    ViewBag.Title = "Browse Current Open Positions at your location!";
+    ViewBag.Title = "Current Open Positions";
 }
 
-<h2>@ViewBag.Title</h2>
+<h2 style="text-align:center;">@ViewBag.Title</h2>
 
 @if (User.IsInRole("Admin"))
+{<h3 style="text-align:center;">@Html.ActionLink("Create New", "Create")</h3>}
+
+
+ <div style="background-image:url(/Content/images/cork-board.jpg); padding:3em; background-repeat:no-repeat; background-position:center; ">
+     <div class="row">
+         <div class="card mb-1" style="max-width: 540px;">
+             <div class="row no-gutters">
+                 <div class="col-md-4">
+                     <img src="~/Content/images/nurse-1490637001R9I.jpg" class="card-img" alt="nurse">
+                 </div>
+                 <div class="col-md-8">
+                     <div class="card-body">
+                         <h5 class="card-title">Example Nurse</h5>
+                         <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                         <a href="" target="_top" class="btn btn-primary">more...</a>
+                         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                     </div>
+                 </div>
+             </div>
+         </div>
+         <div class="card mb-1" style="max-width: 540px;">
+             <div class="row no-gutters">
+                 <div class="col-md-4">
+                     <img src="~/Content/images/nurse-1490637001R9I.jpg" class="card-img" alt="nurse">
+                 </div>
+                 <div class="col-md-8">
+                     <div class="card-body">
+                         <h5 class="card-title">Example Nurse</h5>
+                         <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                         <a href="" target="_top" class="btn btn-primary">more...</a>
+                         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                     </div>
+                 </div>
+             </div>
+         </div>
+         <div class="card mb-1" style="max-width: 540px;">
+             <div class="row no-gutters">
+                 <div class="col-md-4">
+                     <img src="~/Content/images/nurse-1490637001R9I.jpg" class="card-img" alt="nurse">
+                 </div>
+                 <div class="col-md-8">
+                     <div class="card-body">
+                         <h5 class="card-title">Example Nurse</h5>
+                         <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                         <a href="" target="_top" class="btn btn-primary">more...</a>
+                         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+     <div class="row">
+         <div class="card mb-1" style="max-width: 540px;">
+             <div class="row no-gutters">
+                 <div class="col-md-4">
+                     <img src="~/Content/images/nurse-1490637001R9I.jpg" class="card-img" alt="nurse">
+                 </div>
+                 <div class="col-md-8">
+                     <div class="card-body">
+                         <h5 class="card-title">Example Nurse</h5>
+                         <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                         <a href="" target="_top" class="btn btn-primary">more...</a>
+                         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                     </div>
+                 </div>
+             </div>
+         </div>
+         <div class="card mb-1" style="max-width: 540px;">
+             <div class="row no-gutters">
+                 <div class="col-md-4">
+                     <img src="~/Content/images/nurse-1490637001R9I.jpg" class="card-img" alt="nurse">
+                 </div>
+                 <div class="col-md-8">
+                     <div class="card-body">
+                         <h5 class="card-title">Example Nurse</h5>
+                         <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                         <a href="" target="_top" class="btn btn-primary">more...</a>
+                         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                     </div>
+                 </div>
+             </div>
+         </div>
+         <div class="card mb-1" style="max-width: 540px;">
+             <div class="row no-gutters">
+                 <div class="col-md-4">
+                     <img src="~/Content/images/nurse-1490637001R9I.jpg" class="card-img" alt="nurse">
+                 </div>
+                 <div class="col-md-8">
+                     <div class="card-body">
+                         <h5 class="card-title">Example Nurse</h5>
+                         <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                         <a href="" target="_top" class="btn btn-primary">more...</a>
+                         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>     
+ </div>
+
+
+
+
+
+
+
+
+
+@Html.DisplayNameFor(model => model.LocationId)
+
+@Html.DisplayNameFor(model => model.Position.Title)
+
+
+@foreach (var item in Model)
 {
-    <h3>
-        @Html.ActionLink("Create New", "Create")
-    </h3>
-}
-
-<table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.LocationId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Position.Title)
-        </th>
-        <th></th>
+        <td>
+            @Html.DisplayFor(modelItem => item.LocationId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Position.Title)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.OpenPositionId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.OpenPositionId })
+            @if (User.IsInRole("Admin"))
+            {
+                @Html.ActionLink("Delete", "Delete", new { id = item.OpenPositionId })
+            }
+
+        </td>
     </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.LocationId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Position.Title)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.OpenPositionId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.OpenPositionId })
-                @if (User.IsInRole("Admin"))
-                {
-                    @Html.ActionLink("Delete", "Delete", new { id = item.OpenPositionId })
-                }
-
-            </td>
-        </tr>
-    }
+}
 
 </table>

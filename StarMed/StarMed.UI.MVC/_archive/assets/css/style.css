@@ -109,7 +109,7 @@ header::after {
 
 .social a:hover {
   color: #fff;
-  background-color: #ee1515;
+  background-color: none;
 }
 
 .navbar-brand img {
@@ -285,7 +285,7 @@ form button.btn-primary:hover {
 .cta-content {
   padding: 30px 0 90px;
   color: #fff;
-  background-color: #ee1515;
+  background-color: none;
   position: relative;
   z-index: 1;
 }
@@ -469,7 +469,7 @@ form button.btn-primary:hover {
 
 .post-content .post-btn:hover {
   color: #fff;
-  background-color: #ee1515;
+  background-color: none;
 }
 
 /*-----------------------------------
@@ -655,7 +655,7 @@ form button.btn-primary:hover {
     1 - Testimonials
 ------------------------------------*/
 .testimonial-and-clients {
-  background: url(../images/test-clients-bg.png) center center/cover no-repeat #ee1515;
+  background: url(../images/test-clients-bg.png) center center/cover no-repeat 
 }
 
 .testimonials {
@@ -848,7 +848,7 @@ span {
 .tags-widget a:hover {
   text-decoration: none;
   color: #26264b;
-  background-color: #ee1515;
+  background-color: none;
 }
 
 .subscribe-widget form {
@@ -871,7 +871,7 @@ span {
 }
 
 .subscribe-widget button {
-  background: #ee1515;
+  background: none;
   border: none;
   padding: 9px 14px;
   border-top-right-radius: 10px;
@@ -908,7 +908,7 @@ span {
 }
 
 .subscribe-widget .social-nav a:hover {
-  background-color: #ee1515;
+  background-color: none;
 }
 
 /*-----------------------------------
@@ -916,12 +916,12 @@ span {
 ------------------------------------*/
 .foot-note {
   padding: 35px 0;
-  background-color: #ee1515;
+  background-color: none;
   color: #26264b;
 }
 
 .foot-note a {
-  color: #26264b;
+  color: none;
 }
 
 .foot-note a:last-child {

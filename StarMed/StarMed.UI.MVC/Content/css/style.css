@@ -109,7 +109,7 @@ header::after {
 
 .social a:hover {
   color: #fff;
-  background-color: #ee1515;
+  background-color: none;
 }
 
 .navbar-brand img {

@@ -45,8 +45,8 @@
     <!-- Loader End -->
     <!-- Header Start -->
     <header class="position-relative">
-        <div class="container">            
-            <nav class="navbar navbar-expand-md navbar-light">
+        <div>            
+            <nav class="navbar navbar-expand-md navbar-light" id="topNav">
                 <a class="navbar-brand" href="@Url.Action("Index", "Home")"><img src="~/Content/images/StarMed_logo.png" alt="StarMed"></a>
                 <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                     <ul class="navbar-nav nav-links">
@@ -87,7 +87,7 @@
         @RenderBody()
          
     <!-- Footer Start -->
-    <footer class="row footer bg-dark py-5 fixed-bottom">
+    <footer class="row">
         <div class="col-md col-sm"></div>
         <div class="container-fluid col-md col-sm">
             <h1>StarMed</h1>

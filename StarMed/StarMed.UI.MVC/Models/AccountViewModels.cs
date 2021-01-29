@@ -80,10 +80,12 @@ namespace StarMed.UI.MVC.Models
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
+        [Display(Name = "First Name")]
         [Required(ErrorMessage = "Please Provide your First Name")]
         [StringLength(50, ErrorMessage = "Please do not exceed 50 characters")]
         public string FirstName { get; set; }
 
+        [Display(Name = "Last Name")]
         [Required(ErrorMessage = "Please Provide your Last Name")]
         [StringLength(75, ErrorMessage = "Please do not exceed 75 characters")]
         public string LastName { get; set; }
