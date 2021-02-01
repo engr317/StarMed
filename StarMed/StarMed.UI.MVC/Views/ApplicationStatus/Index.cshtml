@@ -1,15 +1,16 @@
 ﻿@model IEnumerable<StarMed.DATA.EF.ApplicationStatus>
 
 @{
-    ViewBag.Title = "Application Status";
+    ViewBag.Title = "StarMed | App Status";
+    ViewBag.Message = "Application Status";
 }
 
-<h2>@ViewBag.Title</h2>
+<h2 style="text-align:center;">@ViewBag.Message</h2>
 
 
 @if (User.IsInRole("Admin"))
 {
-    <p>
+    <p style="text-align:center;">
         @Html.ActionLink("Create New", "Create")
     </p>
 }

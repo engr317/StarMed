@@ -15,15 +15,14 @@ namespace StarMed.UI.MVC.Controllers
     {
         private StarMedEntities db = new StarMedEntities();
 
-        // GET: ApplicationStatus
-        [Authorize]
+        // GET: ApplicationStatus        
         public ActionResult Index()
         {
             return View(db.ApplicationStatuses.ToList());
         }
 
         // GET: ApplicationStatus/Details/5
-        [Authorize]
+        
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -39,7 +38,7 @@ namespace StarMed.UI.MVC.Controllers
         }
 
         // GET: ApplicationStatus/Create
-        [Authorize]
+        
         public ActionResult Create()
         {
             return View();
@@ -49,7 +48,7 @@ namespace StarMed.UI.MVC.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [Authorize]
+        
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ApplicationStatusId,StatusName,StatusDescription")] ApplicationStatus applicationStatus)
         {
@@ -64,7 +63,7 @@ namespace StarMed.UI.MVC.Controllers
         }
 
         // GET: ApplicationStatus/Edit/5
-        [Authorize]
+       
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -83,7 +82,7 @@ namespace StarMed.UI.MVC.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [Authorize]
+        
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ApplicationStatusId,StatusName,StatusDescription")] ApplicationStatus applicationStatus)
         {
@@ -97,7 +96,7 @@ namespace StarMed.UI.MVC.Controllers
         }
 
         // GET: ApplicationStatus/Delete/5
-        [Authorize]
+        
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -113,7 +112,7 @@ namespace StarMed.UI.MVC.Controllers
         }
 
         // POST: ApplicationStatus/Delete/5
-        [Authorize]
+        
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

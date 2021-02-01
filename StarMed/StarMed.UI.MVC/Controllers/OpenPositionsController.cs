@@ -33,7 +33,7 @@ namespace StarMed.UI.MVC.Controllers
                 return View(openPositions.ToList().OrderBy(x => x.Position.Title));            }            else            {
                 var openPositions = db.OpenPositions.Include(o => o.Location).Include(o => o.Position);
                 return View(openPositions.ToList().OrderBy(x => x.Position.Title));
-            }                         
+            }                    
 
         }
 

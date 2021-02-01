@@ -280,6 +280,7 @@
     <Content Include="Content\js\bootstrap.bundle.min.js.map" />
     <Content Include="Content\images\site.webmanifest" />
     <Content Include="Content\Documentation\CENTRTIQResume.docx" />
+    <Content Include="Content\Resumes\NoFile.pdf" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -383,7 +384,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\Resumes\" />
     <Folder Include="_archive\assets\images\" />
   </ItemGroup>
   <ItemGroup>

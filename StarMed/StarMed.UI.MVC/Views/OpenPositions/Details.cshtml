@@ -6,38 +6,46 @@
 
 <h2 style="text-align:center;">@ViewBag.Title</h2>
 
-<div>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Location.StoreNumber)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Location.StoreNumber)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Position.Title)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Position.Title)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Position.JobDescription)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Position.JobDescription)
-        </dd>
-    </dl>
+
+<div class="row">
+    <div class="col">
+        <img style="max-height:50em; max-width:20em; margin-right:0;"  src="~/Content/images/nurse-1490637001R9I.jpg" alt="picture of nurse" title="@Model.Position.Title" />
+    </div>
+    <div class="col">
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Location.StoreNumber)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Location.StoreNumber)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Position.Title)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Position.Title)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Position.JobDescription)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Position.JobDescription)
+            </dd>
+        </dl>
+    </div>
+    <div class="col"></div>
+
 </div>
+
 
 @if (User.IsInRole("Manager"))
 {
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.OpenPositionId }) |
+<p style="text-align:center;">
+    @Html.ActionLink("Edit", "Edit", new { id = Model.OpenPositionId })
 </p>
    
 }
-<p>
-
+<p style="text-align:center;">
     @Html.ActionLink("Back to List", "Index")
 </p>

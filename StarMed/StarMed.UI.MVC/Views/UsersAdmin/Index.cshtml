@@ -1,12 +1,12 @@
 ﻿@model IEnumerable<StarMed.UI.MVC.Models.ApplicationUser>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Current Users ";
 }
 
-<h2>Index</h2>
+<h2 style="text-align:center;">@ViewBag.Title</h2>
 
-<p>
+<p style="text-align:center;">
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
@@ -15,7 +15,7 @@
             @Html.DisplayNameFor(model => model.UserName)
         </th>
         <th>
-
+            Full Name
         </th>
     </tr>
 
@@ -24,6 +24,11 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+               @{var db = new StarMed.DATA.EF.StarMedEntities();
+                   StarMed.DATA.EF.UserDetail user = db.UserDetails.Where(x => x.UserId == item.Id).Single();}
+                    @user.FullName
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |

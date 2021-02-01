@@ -6,7 +6,7 @@ body {
 }
 
 header {
-    background-color:#26264B;
+    background-color: #26264B;
 }
 
 .detailsShape {
@@ -18,16 +18,16 @@ header {
     margin-bottom: 1em;
     color: #fff;
 }
- .view-title {
-     text-align:center;
 
- }
+.view-title {
+    text-align: center;
+}
 
 
 /*** Top nav ***/
 
 #navbarSupportedContent {
-    padding-right:20em;
+    padding-right: 20em;
 }
 
 .navbar {
@@ -53,17 +53,28 @@ nav#topnav li {
 }
 
 .errorMessage {
-    color:black;
+    color: black;
+}
+
+.hamburger {
+    background-color:transparent;
+    border:0;
+    color:#fff;
+    cursor:pointer;
+    font-size:20px;
+}
+
+.hamburger:focus{
+    outline:none;
 }
 
 /* Banner */
 
 #banner {
-    
     background-image: url(../../Content/images/pexels.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    background-position:top center;    
+    background-position: top center;
     height: 500px;
 }
 
@@ -74,7 +85,7 @@ nav#topnav li {
 
     #banner p {
         color: black;
-    }   
+    }
 
 .main {
     background-color: lightgray;
@@ -118,13 +129,13 @@ footer {
     footer .social a {
         margin: 0 2px;
         color: white;
-        display:inline-flex;
-        border:none;
+        display: inline-flex;
+        border: none;
     }
 
-    footer .social a:hover {
-        background-color:none;
-    }    
+        footer .social a:hover {
+            background-color: none;
+        }
 
     footer h1 {
         color: #fff;

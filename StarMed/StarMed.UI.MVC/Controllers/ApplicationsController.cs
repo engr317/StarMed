@@ -24,13 +24,15 @@ namespace StarMed.UI.MVC.Controllers
             string currentUserID = User.Identity.GetUserId();
             if (User.IsInRole("Employee"))
             {
-                var empApplications = applications.Where(x => x.UserId == currentUserID);                
+                var empApplications = applications.Where(x => x.UserId == currentUserID);
+                return View(empApplications.ToList());
             }
 
             //managers can only see apps based on thier location
             if (User.IsInRole("Manager"))
             {
-                var managerApplications = applications.Where(x => x.UserId == currentUserID).Include(x => x.OpenPosition.LocationId);
+                var managerApplications = applications.Where(x => x.OpenPosition.Location.ManagerId == currentUserID);
+                return View(managerApplications.ToList());
             }          
 
             

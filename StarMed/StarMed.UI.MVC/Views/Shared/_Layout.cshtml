@@ -45,10 +45,14 @@
     <!-- Loader End -->
     <!-- Header Start -->
     <header class="position-relative">
-        <div>            
+        <div>
             <nav class="navbar navbar-expand-md navbar-light" id="topNav">
                 <a class="navbar-brand" href="@Url.Action("Index", "Home")"><img src="~/Content/images/StarMed_logo.png" alt="StarMed"></a>
                 <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                    <!-- start of hamburger menu-->
+                    <button class="hamburger" id="hamburger">
+                        <i class="fa fa-bars "></i>
+                    </button>
                     <ul class="navbar-nav nav-links">
                         <li>@Html.ActionLink("Home", "Index", "Home")</li>
                         <li>@Html.ActionLink("About", "About", "Home")</li>
@@ -59,18 +63,20 @@
                             <li class="nav-item dropdown">
                                 <a class="navbar-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Additional Functions<span class="caret"></span></a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    @if (User.IsInRole("Admin") || User.IsInRole("Manager"))
+                                    @if (User.IsInRole("Admin"))
                                     {
+                                        <a class="dropdown-item" href="@Url.Action("Index", "UsersAdmin")">Users</a><br />
+                                        <a class="dropdown-item" href="@Url.Action("Index", "UserDetails")">User Details</a><br />
+                                        <a class="dropdown-item" href="@Url.Action("Index", "RolesAdmin")">Roles</a><br />
+                                        <a class="dropdown-item" href="@Url.Action("Index", "Positions")">Positions</a><br />
                                         <a class="dropdown-item" href="@Url.Action("Index", "Applications")">Applications</a><br />
                                         <a class="dropdown-item" href="@Url.Action("Index", "ApplicationStatus")">App Status</a><br />
                                     }
-                                    @if (User.IsInRole("Admin"))
+                                    @if (User.IsInRole("Employee") || (User.IsInRole("Manager")))
                                     {
-                                        <a class="dropdown-item" href="@Url.Action("Index", "RolesAdmin")">Roles</a><br />
-                                        <a class="dropdown-item" href="@Url.Action("Index", "UsersAdmin")">Users</a><br />
-                                        <a class="dropdown-item" href="@Url.Action("Index", "UserDetails")">User Details</a><br />
-                                        <a class="dropdown-item" href="@Url.Action("Index", "Positions")">Positions</a><br />
+                                        <a class="dropdown-item" href="@Url.Action("Index", "Applications")">Applications</a><br />
                                     }
+
                                     <a class="dropdown-item" href="@Url.Action("Index", "Locations")">Locations</a><br />
                                     <a class="dropdown-item" href="@Url.Action("Index", "OpenPositions")">Open Positions</a>
                                 </div>
@@ -79,13 +85,15 @@
                     </ul>
                     @Html.Partial("_LoginPartial")
                 </div>
+                
+                
             </nav>
         </div>
-    </header>    
-    <!-- Header End -->        
+    </header>
+    <!-- Header End -->
 
-        @RenderBody()
-         
+    @RenderBody()
+
     <!-- Footer Start -->
     <footer class="row">
         <div class="col-md col-sm"></div>
@@ -102,17 +110,16 @@
                     <li><a href="@Url.Action("Documentation", "Home")">Documentation</a></li>
                 </ul>
             </nav>
-        </div>        
-        <div class="social col-md col-sm">
-            <a href="#"><i class="fa fa-twitter fa-2x"></i></a>
-            <a href="#"><i class="fa fa-facebook fa-2x"></i></a>
-            <a href="#"><i class="fa fa-github fa-2x"></i></a>
-            <a href="#"><i class="fa fa-instagram fa-2x"></i></a>
         </div>
-       <div class="col-md col-sm"></div>
+        <div class="social col-md col-sm">
+            <a href="https://www.twitter.com" target="_blank"><i class="fa fa-twitter fa-2x"></i></a>
+            <a href="https://www.facebook.com" target="_blank"><i class="fa fa-facebook fa-2x"></i></a>
+            <a href="https://www.github.com" target="_blank"><i class="fa fa-github fa-2x"></i></a>
+            <a href="https://www.instagram.com" target="_blank"><i class="fa fa-instagram fa-2x"></i></a>
+        </div>
+        <div class="col-md col-sm"></div>
     </footer>
     <!-- Footer End -->
-
     <!--jQuery-->
     <script src="~/Content/js/jquery-3.3.1.js"></script>
     <!--Plugins-->
@@ -123,6 +130,16 @@
     <script src="~/Content/js/lightgallery-all.min.js"></script>
     <!--Template Script-->
     <script src="~/Content/js/main.js"></script>
+    <script>
+function myFunction() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}
+    </script>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

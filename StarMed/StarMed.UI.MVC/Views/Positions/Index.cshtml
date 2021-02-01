@@ -36,12 +36,12 @@
             {
                 if (User.IsInRole("Admin"))
                 {
-                    @Html.ActionLink("Edit", "Edit", new { id = item.LocationId })
-                    @Html.ActionLink("Delete", "Delete", new { id = item.LocationId })
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Title })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.JobDescription })
                 }
 
             }
-            @Html.ActionLink("Details", "Details", new { id = item.LocationId })
+            @Html.ActionLink("Details", "Details", new { id = item.JobDescription })
         </td>
     </tr>
 }

@@ -1,13 +1,14 @@
 ﻿@model StarMed.DATA.EF.UserDetail
 
 @{
-    ViewBag.Title = "User Details";
+    ViewBag.Title = "StarMed | User Details";
+    ViewBag.Message = "User Details";
 }
-
-<h2>@ViewBag.Title</h2>
-
-<dl class="dl-horizontal">
-
+<hr />
+<h2 style="text-align:center;">@ViewBag.Message</h2>
+<hr />
+<dl class="dl-horizontal" style="text-align:center;">
+   
     <dt>
         @Html.DisplayNameFor(model => model.FullName)
     </dt>
@@ -22,9 +23,9 @@
     </dd>
 
 </dl>
-<p>
+<p style="text-align:center;">
     @if (Request.IsAuthenticated && User.IsInRole("Admin"))
-
+        
     {
         @Html.ActionLink("Edit", "Edit", new { id = Model.UserId })
     }

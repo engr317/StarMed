@@ -1,24 +1,24 @@
 ﻿@model IEnumerable<StarMed.DATA.EF.Application>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "StarMed | Applications";
+    ViewBag.Message = "Application Details";
 }
 
-<h2>Index</h2>
+<h2 style="text-align:center;">@ViewBag.Message</h2>
 
-@*<p>
-        @Html.ActionLink("Create New", "Create")
-    </p>*@
+<br />
 <table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.ApplicationDate)
         </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.ManagerNotes)
+            </th>*@
         <th>
-            @Html.DisplayNameFor(model => model.ManagerNotes)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ResumeFilename)
+            @*@Html.DisplayNameFor(model => model.ResumeFilename)*@
+            Link to Resume:
         </th>
         <th>
             @Html.DisplayNameFor(model => model.ApplicationStatus1.StatusName)
@@ -27,7 +27,7 @@
             @Html.DisplayNameFor(model => model.OpenPosition.OpenPositionId)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.UserDetail.FullName)
+            Applicant:
         </th>
         <th></th>
     </tr>
@@ -38,11 +38,12 @@
             <td>
                 @Html.DisplayFor(modelItem => item.ApplicationDate)
             </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.ManagerNotes)
+                </td>*@
             <td>
-                @Html.DisplayFor(modelItem => item.ManagerNotes)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ResumeFilename)
+                @*@Html.DisplayFor(modelItem => item.ResumeFilename)*@
+                <a href="@Url.Content("~/Content/Resumes/" + item.ResumeFilename)" target="_blank">Click to View Document</a>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ApplicationStatus1.StatusName)
@@ -56,10 +57,12 @@
             <td>
                 @if (User.IsInRole("Admin"))
                 {
-                    
-                    @Html.ActionLink("Edit", "Edit", new { id = item.ApplicationId }) 
+                    <p>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ApplicationId }) |
 
-                    @Html.ActionLink("Delete", "Delete", new { id = item.ApplicationId })
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ApplicationId }) |
+
+                    </p>
                 }
                 @Html.ActionLink("Details", "Details", new { id = item.ApplicationId })
             </td>

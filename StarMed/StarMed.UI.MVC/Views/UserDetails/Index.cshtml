@@ -1,12 +1,13 @@
 ﻿@model IEnumerable<StarMed.DATA.EF.UserDetail>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "StarMed | User Details";
+    ViewBag.Message = "Current Users";
 }
+<hr />
+<h2 style="text-align:center;">@ViewBag.Message</h2>
 
-<h2>Index</h2>
-
-<p>
+<p style="text-align:center;">
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
@@ -18,7 +19,7 @@
             @Html.DisplayNameFor(model => model.ResumeFilename)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Locations)
+            @Html.DisplayName("Location:")
         </th>
         <th></th>
     </tr>
@@ -32,7 +33,8 @@
             @Html.DisplayFor(modelItem => item.ResumeFilename)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Locations)
+            @*@Html.DisplayFor(modelItem => Locations.StoreNumber)*@                     
+
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id = item.UserId }) |

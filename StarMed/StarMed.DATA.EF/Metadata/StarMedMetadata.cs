@@ -28,6 +28,7 @@ namespace StarMed.DATA.EF
         public System.DateTime ApplicationDate { get; set; }
 
         [UIHint("MultilineText")]
+        [Display(Name = "Manager Notes: ")]
         [DisplayFormat(NullDisplayText = "[N/A]")]        
         [StringLength(2000, ErrorMessage = "* Accessory name must be 2000 characters or less.")]
         public string ManagerNotes { get; set; }
@@ -102,7 +103,7 @@ namespace StarMed.DATA.EF
     #region OpenPositions Metadata
     public class OpenPositionsMetadata
     {
-
+        [Display(Name = "Open Position#: ")]
         public int OpenPositionId { get; set; }
 
 
@@ -172,5 +173,5 @@ namespace StarMed.DATA.EF
         }
 
     }
-    #endregion
+    #endregion   
 }

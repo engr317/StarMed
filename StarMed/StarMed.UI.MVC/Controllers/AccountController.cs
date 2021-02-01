@@ -173,7 +173,8 @@ namespace StarMed.UI.MVC.Controllers
                             userFile = Guid.NewGuid() + ext;
 
                             userResume.SaveAs(Server.MapPath("~/Content/Resumes/" + userFile));
-                        }
+                        }                        
+                        
                     }
 
                     #endregion
