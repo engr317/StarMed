@@ -7,12 +7,43 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using StarMed.DATA.EF;
+using StarMed.UI.MVC.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+
 
 namespace StarMed.UI.MVC.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class LocationsController : Controller
     {
         private StarMedEntities db = new StarMedEntities();
+
+        private ApplicationUserManager _userManager;
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
+        }
+
+        private ApplicationRoleManager _roleManager;
+        public ApplicationRoleManager RoleManager
+        {
+            get
+            {
+                return _roleManager ?? HttpContext.GetOwinContext().Get<ApplicationRoleManager>();
+            }
+            private set
+            {
+                _roleManager = value;
+            }
+        }
 
         // GET: Locations  
         [AllowAnonymous]
@@ -42,7 +73,27 @@ namespace StarMed.UI.MVC.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
-            ViewBag.ManagerId = new SelectList(db.UserDetails, "UserId", "FirstName");
+            //get all users in a role
+            var role = RoleManager.FindByName("Employee");
+            //get the list of users in this role
+            var users = new List<ApplicationUser>();
+
+            //Get the list of users in this role
+            foreach (var user in UserManager.Users.ToList())
+            {
+                if (UserManager.IsInRole(user.Id, role.Name))
+                {
+                    users.Add(user);
+                }
+            }
+            List<UserDetail> employees = new List<UserDetail>();
+            foreach (var user in users)
+            {
+                var emp = db.UserDetails.Where(u => u.UserId == user.Id).Single();
+                employees.Add(emp);
+            }
+            ViewBag.ManagerId = new SelectList(db.UserDetails, "UserId", "FullName");
+
             return View();
         }
 
@@ -61,7 +112,7 @@ namespace StarMed.UI.MVC.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ManagerId = new SelectList(db.UserDetails, "UserId", "FirstName", location.ManagerId);
+            ViewBag.ManagerId = new SelectList(db.UserDetails, "UserId", "FullName", location.ManagerId);
             return View(location);
         }
 
@@ -78,7 +129,7 @@ namespace StarMed.UI.MVC.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.ManagerId = new SelectList(db.UserDetails, "UserId", "FirstName", location.ManagerId);
+            ViewBag.ManagerId = new SelectList(db.UserDetails, "UserId", "FullName", location.ManagerId);
             return View(location);
         }
 
@@ -96,7 +147,7 @@ namespace StarMed.UI.MVC.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ManagerId = new SelectList(db.UserDetails, "UserId", "FirstName", location.ManagerId);
+            ViewBag.ManagerId = new SelectList(db.UserDetails, "UserId", "FullName", location.ManagerId);
             return View(location);
         }
 

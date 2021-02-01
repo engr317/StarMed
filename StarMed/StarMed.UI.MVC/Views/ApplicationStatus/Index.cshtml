@@ -6,9 +6,15 @@
 
 <h2>@ViewBag.Title</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
+@if (User.IsInRole("Admin"))
+{
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+}
+
+
 <table class="table">
     <tr>
         <th>
@@ -20,20 +26,26 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.StatusName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StatusDescription)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ApplicationStatusId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ApplicationStatusId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ApplicationStatusId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StatusName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StatusDescription)
+            </td>
+            <td>
+                @if (User.IsInRole("Admin"))
+                {
+                    <p>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ApplicationStatusId }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.ApplicationStatusId }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ApplicationStatusId })
+                    </p>
+                }
+            </td>
+        </tr>
+    }
 
 </table>

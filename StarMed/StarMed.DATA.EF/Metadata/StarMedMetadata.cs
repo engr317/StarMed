@@ -28,8 +28,7 @@ namespace StarMed.DATA.EF
         public System.DateTime ApplicationDate { get; set; }
 
         [UIHint("MultilineText")]
-        [DisplayFormat(NullDisplayText = "[N/A]")]
-        [Required(ErrorMessage = "* Description is required")]
+        [DisplayFormat(NullDisplayText = "[N/A]")]        
         [StringLength(2000, ErrorMessage = "* Accessory name must be 2000 characters or less.")]
         public string ManagerNotes { get; set; }
 
@@ -74,8 +73,6 @@ namespace StarMed.DATA.EF
     #region Locations Metadata
     public class LocationsMetadata
     {
-
-
         public int LocationId { get; set; }
 
         [Display(Name = "Store Number: ")]
@@ -99,7 +96,6 @@ namespace StarMed.DATA.EF
         public string ManagerId { get; set; }
     }
     [MetadataType(typeof(LocationsMetadata))]
-
     public partial class Location { }
     #endregion
 
@@ -110,11 +106,11 @@ namespace StarMed.DATA.EF
         public int OpenPositionId { get; set; }
 
 
-
+        [Display(Name = "Position: ")]
         public int PositionId { get; set; }
 
 
-
+        [Display(Name = "Location: ")]
         public int LocationId { get; set; }
     }
     [MetadataType(typeof(OpenPositionsMetadata))]

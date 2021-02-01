@@ -3,6 +3,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using System.Linq;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -138,6 +139,8 @@ namespace StarMed.UI.MVC.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            //var locationQuery = from location in Location
+            //                    select location;
             return View();
         }
 
@@ -180,21 +183,24 @@ namespace StarMed.UI.MVC.Controllers
 
                     newUserDetails.UserId = user.Id;
                     newUserDetails.FirstName = model.FirstName;
-                    newUserDetails.LastName = model.LastName;                    
+                    newUserDetails.LastName = model.LastName;
+                    //newUserDetails.FavoriteColor = Locations;
+
+
                     //use the resulting file for the resume
                     newUserDetails.ResumeFilename = userFile;
+                    
                     
                     //save the user details to the DB
                     StarMedEntities db = new StarMedEntities();
                     db.UserDetails.Add(newUserDetails);
                     db.SaveChanges();
 
+                    
 
 
-                    //var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    //var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    //await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
-                    //ViewBag.Link = callbackUrl;
+
+                    
                     return RedirectToAction("Login");
                 }
                 AddErrors(result);

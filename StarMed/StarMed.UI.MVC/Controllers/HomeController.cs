@@ -17,7 +17,7 @@ namespace StarMed.UI.MVC.Controllers
         [HttpGet]        
         public ActionResult About()
         {
-            ViewBag.Message = "Your app description page.";
+            ViewBag.Message = "About Us";
 
             return View();
         }

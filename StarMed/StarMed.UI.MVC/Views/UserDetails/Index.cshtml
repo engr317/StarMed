@@ -13,11 +13,13 @@
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.FullName)
-        </th>        
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.ResumeFilename)
         </th>
-        
+        <th>
+            @Html.DisplayNameFor(model => model.Locations)
+        </th>
         <th></th>
     </tr>
 
@@ -25,14 +27,17 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.FullName)
-        </td>        
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.ResumeFilename)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.UserId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.UserId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.UserId })
+            @Html.DisplayFor(modelItem => item.Locations)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.UserId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.UserId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.UserId })
         </td>
     </tr>
 }

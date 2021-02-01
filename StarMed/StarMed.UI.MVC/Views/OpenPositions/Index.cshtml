@@ -4,141 +4,73 @@
     ViewBag.Title = "Current Open Positions";
 }
 
-<h2 style="text-align:center;">@ViewBag.Title</h2>
+<h2 class="view-title">@ViewBag.Title</h2>
 
-@if (User.IsInRole("Admin"))
-{<h3 style="text-align:center;">@Html.ActionLink("Create New", "Create")</h3>}
+@if (User.IsInRole("Manager"))
+{<h3 style="text-align:center;">@Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-default" })</h3>}
 
-
- <div style="background-image:url(/Content/images/cork-board.jpg); padding:3em; background-repeat:no-repeat; background-position:center; ">
-     <div class="row">
-         <div class="card mb-1" style="max-width: 540px;">
-             <div class="row no-gutters">
-                 <div class="col-md-4">
-                     <img src="~/Content/images/nurse-1490637001R9I.jpg" class="card-img" alt="nurse">
-                 </div>
-                 <div class="col-md-8">
-                     <div class="card-body">
-                         <h5 class="card-title">Example Nurse</h5>
-                         <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                         <a href="" target="_top" class="btn btn-primary">more...</a>
-                         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                     </div>
-                 </div>
-             </div>
-         </div>
-         <div class="card mb-1" style="max-width: 540px;">
-             <div class="row no-gutters">
-                 <div class="col-md-4">
-                     <img src="~/Content/images/nurse-1490637001R9I.jpg" class="card-img" alt="nurse">
-                 </div>
-                 <div class="col-md-8">
-                     <div class="card-body">
-                         <h5 class="card-title">Example Nurse</h5>
-                         <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                         <a href="" target="_top" class="btn btn-primary">more...</a>
-                         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                     </div>
-                 </div>
-             </div>
-         </div>
-         <div class="card mb-1" style="max-width: 540px;">
-             <div class="row no-gutters">
-                 <div class="col-md-4">
-                     <img src="~/Content/images/nurse-1490637001R9I.jpg" class="card-img" alt="nurse">
-                 </div>
-                 <div class="col-md-8">
-                     <div class="card-body">
-                         <h5 class="card-title">Example Nurse</h5>
-                         <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                         <a href="" target="_top" class="btn btn-primary">more...</a>
-                         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                     </div>
-                 </div>
-             </div>
-         </div>
-     </div>
-     <div class="row">
-         <div class="card mb-1" style="max-width: 540px;">
-             <div class="row no-gutters">
-                 <div class="col-md-4">
-                     <img src="~/Content/images/nurse-1490637001R9I.jpg" class="card-img" alt="nurse">
-                 </div>
-                 <div class="col-md-8">
-                     <div class="card-body">
-                         <h5 class="card-title">Example Nurse</h5>
-                         <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                         <a href="" target="_top" class="btn btn-primary">more...</a>
-                         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                     </div>
-                 </div>
-             </div>
-         </div>
-         <div class="card mb-1" style="max-width: 540px;">
-             <div class="row no-gutters">
-                 <div class="col-md-4">
-                     <img src="~/Content/images/nurse-1490637001R9I.jpg" class="card-img" alt="nurse">
-                 </div>
-                 <div class="col-md-8">
-                     <div class="card-body">
-                         <h5 class="card-title">Example Nurse</h5>
-                         <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                         <a href="" target="_top" class="btn btn-primary">more...</a>
-                         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                     </div>
-                 </div>
-             </div>
-         </div>
-         <div class="card mb-1" style="max-width: 540px;">
-             <div class="row no-gutters">
-                 <div class="col-md-4">
-                     <img src="~/Content/images/nurse-1490637001R9I.jpg" class="card-img" alt="nurse">
-                 </div>
-                 <div class="col-md-8">
-                     <div class="card-body">
-                         <h5 class="card-title">Example Nurse</h5>
-                         <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                         <a href="" target="_top" class="btn btn-primary">more...</a>
-                         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                     </div>
-                 </div>
-             </div>
-         </div>
-     </div>     
- </div>
+<div style="background-image:url(/Content/images/cork-board.jpg); padding:3em; background-repeat:no-repeat; background-position:center; ">
+    <div class="row">
 
 
 
 
 
+        @foreach (var item in Model)
+        {
+
+            <div class="card mb-1" style="width: 500px;">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <!--Future Update to add image field to position then update this with the Dynamic Image from the positions.-->
+                        <img src="~/Content/images/nurse-1490637001R9I.jpg" class="card-img-top img-responsive" alt="nurse">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title"><strong>@Html.DisplayFor(modelItem => item.Position.Title)</strong></h5>
+                            <p class="card-text"><strong>Store Number</strong><br />@Html.DisplayFor(model => item.Location.StoreNumber)</p>
+                            <p class="card-text"><strong>Job Description</strong><br />@Html.DisplayFor(model => item.Position.JobDescription)</p>
+                            @if (User.IsInRole("Employee"))
+                            {
+                                <p>
+                                    @*@if (.Any(x => x.OpenPositionId == item.OpenPositionId))
+                {
+                        <span class="btn btn-primary">Applied</span>
+                }
+                else
+                {
+
+                }*@
+                                    @Html.ActionLink("Apply", "OneClickApply", "OpenPositions", new { id = item.OpenPositionId }, new { @class = "btn btn-success" })
+                                    @Html.ActionLink("Details", "Details", new { @class = "btn btn-primary", id = item.OpenPositionId })
+
+                                </p>
+                            }
+                            @if (Request.IsAuthenticated)
+                            {
+                                if (User.IsInRole("Admin"))
+                                {
+                                <p>
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.OpenPositionId }) |
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.OpenPositionId })
+                                </p>
+                                    
+                                }
+                            }
+
+
+                            @*@Html.DisplayNameFor(model => model.LocationId):
+        @Html.DisplayFor(modelItem => item.Location.StoreNumber) - @Html.DisplayFor(x => item.Location.City),  @Html.DisplayFor(x => item.Location.State)*@
 
 
 
 
-@Html.DisplayNameFor(model => model.LocationId)
+                            <p class="card-text"><small class="text-muted"></small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
 
-@Html.DisplayNameFor(model => model.Position.Title)
-
-
-@foreach (var item in Model)
-{
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.LocationId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Position.Title)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.OpenPositionId }) |
-            @Html.ActionLink("Details", "Details", new { id = item.OpenPositionId })
-            @if (User.IsInRole("Admin"))
-            {
-                @Html.ActionLink("Delete", "Delete", new { id = item.OpenPositionId })
-            }
-
-        </td>
-    </tr>
-}
-
-</table>

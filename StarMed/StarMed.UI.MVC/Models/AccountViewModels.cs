@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+//using System.Web.Mvc;
 
 namespace StarMed.UI.MVC.Models
 {
@@ -89,6 +90,10 @@ namespace StarMed.UI.MVC.Models
         [Required(ErrorMessage = "Please Provide your Last Name")]
         [StringLength(75, ErrorMessage = "Please do not exceed 75 characters")]
         public string LastName { get; set; }
+
+        //[Display(Name = "Location")]
+        //[Required(ErrorMessage = "Please Provide your Location")]
+        //public IEnumerable<SelectListItem> Locations { get; set; }
 
         
     }
