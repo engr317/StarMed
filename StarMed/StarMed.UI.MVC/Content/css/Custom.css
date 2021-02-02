@@ -32,8 +32,8 @@ header {
 
 .navbar {
     display: flex;
-    /*justify-content: space-around;*/
-    /*align-items: center;*/
+    justify-content: space-around;
+    align-items: center;
     min-height: 8vh;
     font-family: 'Poppins', sans-serif;
 }
@@ -67,6 +67,10 @@ nav#topnav li {
 .hamburger:focus{
     outline:none;
 }
+
+
+/* Media section for hamburger menu*/
+
 
 /* Banner */
 
